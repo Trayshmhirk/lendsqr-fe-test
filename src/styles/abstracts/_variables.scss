@@ -1,0 +1,49 @@
+// Brand Typography
+$font-main: "Work Sans", sans-serif;
+$font-accent: "Roboto", sans-serif;
+// Fallback to standard sans-serif system fonts if Avenir Next isn't installed locally on the client machine
+$font-login: "Avenir Next", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+// Brand Core Colors
+$color-navy: #213f7d;
+$color-teal: #39cdcc;
+$color-slate: #545f7d;
+$color-bg-dashboard: #fbfbfb;
+$color-bg-login-left: #fcfcfc;
+$color-white: #ffffff;
+
+// Form Element Assets
+$border-input: 2px solid rgba(84, 95, 125, 0.15); // #545F7D26 equivalent
+$placeholder-opacity: 0.6;
+
+// Badges & Status Elements (Exact Hex + Opacity Maps)
+$status-inactive-bg: rgba(84, 95, 125, 0.06);
+$status-inactive-text: #545f7d;
+
+$status-pending-bg: rgba(233, 178, 0, 0.1);
+$status-pending-text: #e9b200;
+
+$status-blacklisted-bg: rgba(228, 3, 59, 0.1);
+$status-blacklisted-text: #e4033b;
+
+$status-active-bg: rgba(57, 205, 98, 0.06);
+$status-active-text: #39cd62;
+
+// Dashboard Stat Widget Elements
+$stat-users-color: #df18ff;
+$stat-users-bg: rgba(223, 24, 255, 0.1);
+
+$stat-active-color: #5718ff;
+$stat-active-bg: rgba(87, 24, 255, 0.1);
+
+$stat-loans-color: #f55f44;
+$stat-loans-bg: rgba(245, 95, 68, 0.1);
+
+$stat-savings-color: #ff3366;
+$stat-savings-bg: rgba(255, 51, 102, 0.1);
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1440px;

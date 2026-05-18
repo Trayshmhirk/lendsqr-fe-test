@@ -1,7 +1,12 @@
+@import "../styles/abstracts/variables";
+@import "../styles/abstracts/mixins";
+
 .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   min-height: 100vh;
-  font-family: sans-serif;
+  background-color: $color-bg-dashboard;
+  font-family: var(--font-work-sans), sans-serif;
+  color: $color-navy;
+  flex-direction: column;
+  gap: 1rem;
 }
