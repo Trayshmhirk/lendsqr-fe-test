@@ -48,7 +48,7 @@ export default function Topbar({ toggleSidebar }: { toggleSidebar?: () => void }
           </svg>
         </button>
 
-        <Link href="/dashboard">
+        <Link href="/">
           <Image src="/img/logo.svg" alt="Lendsqr Logo" width={145} height={30} priority className={styles.logo} />
         </Link>
 
