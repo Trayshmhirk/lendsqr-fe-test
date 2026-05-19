@@ -1,9 +1,13 @@
-import styles from "./page.module.scss";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <h1>Lendsqr Frontend Assessment</h1>
-    </main>
-  );
+export default async function Home() {
+  const cookieStore = await cookies();
+  const authSession = cookieStore.get("lendsqr_session");
+
+  if (!authSession) {
+    redirect("/login");
+  }
+
+  redirect("/dashboard/users");
 }
