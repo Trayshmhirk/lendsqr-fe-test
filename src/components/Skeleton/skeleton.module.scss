@@ -76,3 +76,83 @@
     }
   }
 }
+
+/* =========================================
+   User Details Specific Skeleton Blocks
+========================================= */
+.detailsHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.skBack {
+  width: 120px;
+  height: 20px;
+  margin-bottom: 1.5rem;
+}
+.skTitle {
+  width: 200px;
+  height: 32px;
+}
+.skBtn {
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+}
+.skAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.skTextLg {
+  width: 160px;
+  height: 24px;
+  margin-bottom: 8px;
+}
+.skTextSm {
+  width: 100px;
+  height: 16px;
+}
+.skTab {
+  width: 80px;
+  height: 20px;
+}
+.skSectionTitle {
+  width: 200px;
+  height: 20px;
+  margin-bottom: 1.5rem;
+}
+.skLabel {
+  width: 100px;
+  height: 12px;
+  margin-bottom: 8px;
+}
+.skValue {
+  width: 140px;
+  height: 16px;
+}
+
+.skDetailsCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+  padding: 1.875rem 1.875rem 0 1.875rem;
+  margin-bottom: 1.875rem;
+}
+
+.skDetailsContent {
+  background-color: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+  padding: 1.875rem;
+}

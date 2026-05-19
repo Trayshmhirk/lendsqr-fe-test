@@ -1,0 +1,74 @@
+@use "../../styles/abstracts" as *;
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 400px;
+  background-color: $color-white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-top: 1rem;
+
+  &.transparent {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 3rem 2rem;
+    margin-top: 0;
+    min-height: auto;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(33, 63, 125, 0.04); // Very soft navy tint
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  img {
+    opacity: 0.6;
+  }
+}
+
+.title {
+  color: $color-navy; // Removed the aggressive red
+  font-size: 1.5rem;
+  font-weight: 500; // Matches your standard page titles
+  margin-bottom: 0.75rem;
+}
+
+.message {
+  color: $color-slate;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  max-width: 380px;
+  white-space: wrap;
+}
+
+.returnBtn {
+  background-color: transparent;
+  border: 1px solid $color-teal;
+  color: $color-teal;
+  padding: 0.75rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(57, 205, 204, 0.05); // Soft teal background on hover
+  }
+}

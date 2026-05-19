@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTableState, UserRecord } from "@/hooks/useTableState";
 import styles from "./data-table.module.scss";
 import CustomSelect from "@/components/CustomSelect/CustomSelect";
+import NotFound from "@/components/NotFound/NotFound";
 
 interface DataTableProps {
   records: UserRecord[];
@@ -143,51 +144,63 @@ export default function DataTable({ records }: DataTableProps) {
           </thead>
 
           <tbody>
-            {paginatedData.map((row) => (
-              <tr key={row.id}>
-                <td>{row.organization}</td>
-                <td>{row.username}</td>
-                <td>{row.email}</td>
-                <td>{row.phoneNumber}</td>
-                <td>{row.dateJoined}</td>
-
-                <td>
-                  <span className={`${styles.badge} ${styles[`badge--${row.status.toLowerCase()}`]}`}>
-                    {row.status}
-                  </span>
-                </td>
-
-                <td>
-                  <div className={styles.actionWrapper}>
-                    <button className={styles.actionBtn} onClick={() => toggleRowMenu(row.id)}>
-                      <Image src="/icons/vertical-ellipsis.svg" alt="" width={14} height={14} />
-                    </button>
-
-                    {/* Actions Context Menu Overlay */}
-                    {activeRowMenuId === row.id && (
-                      <div
-                        className={`${styles.actionsMenu} ${
-                          paginatedData.indexOf(row) >= paginatedData.length - 2 ? styles.alignUp : ""
-                        }`}
-                      >
-                        <Link href={`/dashboard/users/${row.id}`}>
-                          <Image src="/icons/eye.svg" alt="" width={16} height={16} />
-                          <span>View Details</span>
-                        </Link>
-                        <button onClick={() => alert("User Blacklisted")}>
-                          <Image src="/icons/blacklist.svg" alt="" width={16} height={16} />
-                          <span>Blacklist User</span>
-                        </button>
-                        <button onClick={() => alert("User Activated")}>
-                          <Image src="/icons/activate.svg" alt="" width={16} height={16} />
-                          <span>Activate User</span>
-                        </button>
-                      </div>
-                    )}
-                  </div>
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td colSpan={columns.length + 1} style={{ borderBottom: "none", padding: 0 }}>
+                  <NotFound
+                    title="No Users Found"
+                    message="No users match the search filters you applied. Try resetting the filters."
+                    transparent
+                  />
                 </td>
               </tr>
-            ))}
+            ) : (
+              paginatedData.map((row) => (
+                <tr key={row.id}>
+                  <td>{row.organization}</td>
+                  <td>{row.username}</td>
+                  <td>{row.email}</td>
+                  <td>{row.phoneNumber}</td>
+                  <td>{row.dateJoined}</td>
+
+                  <td>
+                    <span className={`${styles.badge} ${styles[`badge--${row.status.toLowerCase()}`]}`}>
+                      {row.status}
+                    </span>
+                  </td>
+
+                  <td>
+                    <div className={styles.actionWrapper}>
+                      <button className={styles.actionBtn} onClick={() => toggleRowMenu(row.id)}>
+                        <Image src="/icons/vertical-ellipsis.svg" alt="" width={14} height={14} />
+                      </button>
+
+                      {/* Actions Context Menu Overlay */}
+                      {activeRowMenuId === row.id && (
+                        <div
+                          className={`${styles.actionsMenu} ${
+                            paginatedData.indexOf(row) >= paginatedData.length - 2 ? styles.alignUp : ""
+                          }`}
+                        >
+                          <Link href={`/dashboard/users/${row.id}`}>
+                            <Image src="/icons/eye.svg" alt="" width={16} height={16} />
+                            <span>View Details</span>
+                          </Link>
+                          <button onClick={() => alert("User Blacklisted")}>
+                            <Image src="/icons/blacklist.svg" alt="" width={16} height={16} />
+                            <span>Blacklist User</span>
+                          </button>
+                          <button onClick={() => alert("User Activated")}>
+                            <Image src="/icons/activate.svg" alt="" width={16} height={16} />
+                            <span>Activate User</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
