@@ -1,0 +1,49 @@
+@use "../../styles/abstracts" as *;
+
+.card {
+  background-color: $color-white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 1.25rem 1.875rem 1.875rem 1.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 240px;
+  flex: 1;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include flex-center;
+
+  // Clean, scalable mapping using your design system abstract tokens
+  &--users {
+    background-color: $stat-users-bg;
+  }
+  &--active {
+    background-color: $stat-active-bg;
+  }
+  &--loans {
+    background-color: $stat-loans-bg;
+  }
+  &--savings {
+    background-color: $stat-savings-bg;
+  }
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-slate;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-navy;
+}
