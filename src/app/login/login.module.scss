@@ -1,0 +1,163 @@
+@use "../../styles/abstracts" as *;
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  // Avenir Next fallback stack (matches Figma)
+  font-family: "Avenir Next", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.leftPane {
+  flex: 1;
+  background-color: $color-bg-login-left;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @include respond-to(tablet) {
+    display: none; // Hide illustration entirely on smaller screens
+  }
+
+  .logoContainer {
+    margin-bottom: auto;
+  }
+
+  .illustrationContainer {
+    flex: 1;
+    @include flex-center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+    }
+  }
+}
+
+.rightPane {
+  flex: 1;
+  background-color: $color-white;
+  @include flex-center;
+  padding: 2rem;
+
+  .formWrapper {
+    width: 100%;
+    max-width: 447px;
+
+    h1 {
+      color: $color-navy;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      color: $color-slate;
+      font-size: 1.25rem;
+      margin-bottom: 3.75rem;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .inputGroup {
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: $border-input;
+      border-radius: 5px;
+      font-size: 0.875rem;
+      color: $color-slate;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+
+      &::placeholder {
+        color: rgba(84, 95, 125, $placeholder-opacity);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $color-teal;
+      }
+
+      // Border turns red if error state is triggered
+      &.hasError {
+        border-color: #e4033b;
+
+        &:focus {
+          box-shadow: 0 0 0 1px #e4033b;
+        }
+      }
+    }
+
+    .showPasswordBtn {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: $color-teal;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  }
+
+  // Error messaging block below fields
+  .fieldError {
+    color: #e4033b;
+    font-size: 0.75rem;
+    margin-top: 0.35rem;
+    padding-left: 0.25rem;
+    font-weight: 500;
+  }
+
+  .genericError {
+    background-color: rgba(228, 3, 59, 0.05);
+    border: 1px solid rgba(228, 3, 59, 0.2);
+    color: #e4033b;
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .forgotPassword {
+    color: $color-teal;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0rem;
+    margin-bottom: 0.3755rem;
+  }
+
+  .submitBtn {
+    background-color: $color-teal;
+    color: $color-white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

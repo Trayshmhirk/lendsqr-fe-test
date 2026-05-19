@@ -1,4 +1,5 @@
-@import "variables";
+// src/styles/abstracts/_mixins.scss
+@use "variables" as *;
 
 // Media Query Mixin
 @mixin respond-to($breakpoint) {

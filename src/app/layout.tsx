@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable} ${roboto.variable}`}>{children}</body>
+      <body className={`${workSans.variable} ${roboto.variable}`} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
