@@ -7,7 +7,7 @@
   margin-bottom: 2rem;
   margin-top: 1.5rem;
 
-  @include respond-to(tablet) {
+  @include respond-to(desktop) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
@@ -86,7 +86,7 @@
   gap: 1.875rem;
   margin-bottom: 3rem;
 
-  @include respond-to(tablet) {
+  @include respond-to(desktop) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
@@ -118,7 +118,7 @@
   width: 1px;
   height: 80px;
   background-color: rgba(84, 95, 125, 0.2);
-  @include respond-to(tablet) {
+  @include respond-to(desktop) {
     display: none;
   }
 }
@@ -207,22 +207,46 @@
 
 .dataGrid {
   display: grid;
-  // 5 columns on desktop, 3 on tablet, 1 on mobile
+  // 1. 1440px+ (Figma standard)
   grid-template-columns: repeat(5, 1fr);
   gap: 1.875rem;
 
-  @include respond-to(desktop) {
+  // 2. Large Laptop (1200px)
+  @media (max-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  // 3. Desktop/Small Laptop (1024px)
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
+    column-gap: 1.5rem;
+  }
+
+  // 4. Awkward in-between tablet phase (900px) - THE FIX
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // 5. Standard Tablet (768px)
   @include respond-to(tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  // 6. Mobile (480px)
   @include respond-to(mobile) {
     grid-template-columns: 1fr;
   }
 
   &.grid4 {
     grid-template-columns: repeat(4, 1fr);
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
     @include respond-to(tablet) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -247,6 +271,10 @@
     color: $color-slate;
     font-size: 1rem;
     font-weight: 500;
-    word-break: break-all;
+
+    // THE FIX: Replaced break-all with overflow-wrap
+    // This ensures it only breaks lines at spaces, unless a single word is insanely long
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 }
