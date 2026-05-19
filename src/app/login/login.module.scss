@@ -111,6 +111,7 @@
       letter-spacing: 0.1em;
       cursor: pointer;
       text-transform: uppercase;
+      font-family: inherit;
     }
   }
 
@@ -155,6 +156,7 @@
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: opacity 0.3s ease;
+    font-family: inherit;
 
     &:hover {
       opacity: 0.9;
