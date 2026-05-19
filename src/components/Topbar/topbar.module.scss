@@ -13,6 +13,11 @@
   justify-content: space-between;
   padding: 0 3.75rem 0 1.875rem;
   z-index: 100;
+
+  @include respond-to(tablet) {
+    padding: 0 1.5rem; // Shrink outer padding for mobile
+    height: 80px;
+  }
 }
 
 .leftSection {
@@ -21,7 +26,26 @@
   gap: 10.5rem;
 
   @include respond-to(tablet) {
-    gap: 2rem;
+    gap: 1rem;
+  }
+}
+
+.hamburgerBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+
+  @include respond-to(tablet) {
+    display: block; // Only show on mobile/tablet
+  }
+}
+
+.logo {
+  @include respond-to(mobile) {
+    width: 110px;
+    height: auto;
   }
 }
 
@@ -30,7 +54,7 @@
   width: 400px;
   height: 40px;
 
-  @include respond-to(mobile) {
+  @include respond-to(desktop) {
     display: none; // Hide search on small mobile viewports
   }
 
@@ -72,12 +96,21 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  margin-left: 1rem;
 
+  @include respond-to(tablet) {
+    gap: 1rem;
+    margin-left: 0rem;
+  }
   .docsLink {
     color: $color-navy;
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
     text-decoration: underline;
+
+    @include respond-to(tablet) {
+      display: none; // Clean up mobile header space
+    }
   }
 
   .bellBtn {
@@ -103,6 +136,10 @@
     color: $color-navy;
     font-size: 1rem;
     font-weight: 500;
+
+    @include respond-to(mobile) {
+      display: none;
+    }
   }
 
   .dropdownArrow {

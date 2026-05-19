@@ -13,10 +13,14 @@
   flex: 1;
   padding-top: 100px; // Offset cleanly for the fixed Topbar height
   position: relative;
+
+  @include respond-to(tablet) {
+    padding-top: 80px;
+  }
 }
 
 .sidebarContainer {
-  width: 283px; // Explicit width matching the Figma specification
+  width: 283px;
   background-color: $color-white;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   position: fixed;
@@ -24,18 +28,40 @@
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  z-index: 10;
+  z-index: 20;
   transition: transform 0.3s ease;
 
   @include respond-to(tablet) {
-    transform: translateX(-100%); // Hide off-screen on mobile/tablet viewports
+    transform: translateX(-100%);
+    top: 80px;
+  }
+
+  // Slide in when active
+  &.open {
+    @include respond-to(tablet) {
+      transform: translateX(0);
+    }
+  }
+}
+
+.mobileOverlay {
+  display: none;
+  @include respond-to(tablet) {
+    display: block;
     position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    backdrop-filter: blur(2px); // Premium native feel
   }
 }
 
 .contentWorkspace {
   flex: 1;
-  margin-left: 283px; // Offset perfectly to prevent sidebar overlapping
+  margin-left: 283px;
   padding: 3.75rem 3.75rem 3.75rem 3.75rem;
   min-height: calc(100vh - 100px);
   overflow-x: hidden;
