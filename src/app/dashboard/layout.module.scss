@@ -1,0 +1,47 @@
+@use "../../styles/abstracts" as *;
+
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $color-bg-dashboard;
+  font-family: var(--font-work-sans), sans-serif;
+}
+
+.mainWrapper {
+  display: flex;
+  flex: 1;
+  padding-top: 100px; // Offset cleanly for the fixed Topbar height
+  position: relative;
+}
+
+.sidebarContainer {
+  width: 283px; // Explicit width matching the Figma specification
+  background-color: $color-white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 10;
+  transition: transform 0.3s ease;
+
+  @include respond-to(tablet) {
+    transform: translateX(-100%); // Hide off-screen on mobile/tablet viewports
+    position: fixed;
+  }
+}
+
+.contentWorkspace {
+  flex: 1;
+  margin-left: 283px; // Offset perfectly to prevent sidebar overlapping
+  padding: 3.75rem 3.75rem 3.75rem 3.75rem;
+  min-height: calc(100vh - 100px);
+  overflow-x: hidden;
+
+  @include respond-to(tablet) {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
+}

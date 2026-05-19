@@ -5,8 +5,8 @@ export function proxy(request: NextRequest) {
   const authSession = request.cookies.get("lendsqr_session");
   const { pathname } = request.nextUrl;
 
-  // Protect dashboard and user management routes
-  const isProtectedRoute = pathname.startsWith("/dashboard") || pathname.startsWith("/users");
+  // Protect dashboard routes
+  const isProtectedRoute = pathname.startsWith("/dashboard");
 
   if (isProtectedRoute && !authSession) {
     return NextResponse.redirect(new URL("/login", request.url));
@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
 
   // Prevent logged-in users from hitting login screens
   if (authSession && (pathname === "/" || pathname === "/login")) {
-    return NextResponse.redirect(new URL("/users", request.url));
+    return NextResponse.redirect(new URL("/dashboard/users", request.url));
   }
 
   return NextResponse.next();

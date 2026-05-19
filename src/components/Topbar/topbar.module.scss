@@ -1,0 +1,113 @@
+@use "../../styles/abstracts" as *;
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: $color-white;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3.75rem 0 1.875rem;
+  z-index: 100;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 10.5rem;
+
+  @include respond-to(tablet) {
+    gap: 2rem;
+  }
+}
+
+.searchGroup {
+  display: flex;
+  width: 400px;
+  height: 40px;
+
+  @include respond-to(mobile) {
+    display: none; // Hide search on small mobile viewports
+  }
+
+  input {
+    flex: 1;
+    border: 1px solid rgba(33, 63, 125, 0.2);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    color: $color-slate;
+
+    &::placeholder {
+      color: rgba(84, 95, 125, 0.7);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-teal;
+    }
+  }
+
+  .searchBtn {
+    width: 56px;
+    background-color: $color-teal;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    @include flex-center;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .docsLink {
+    color: $color-navy;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .bellBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+.profileBox {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .adminName {
+    color: $color-navy;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .dropdownArrow {
+    width: 10px;
+    height: auto;
+    object-fit: contain;
+  }
+}

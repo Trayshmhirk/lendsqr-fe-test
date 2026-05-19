@@ -58,7 +58,7 @@ export function useLoginForm() {
         return;
       }
 
-      router.push("/users");
+      router.push("/dashboard/users");
     } catch {
       setErrors({ generic: "Network error. Please try again later." });
     } finally {

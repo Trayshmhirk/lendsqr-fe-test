@@ -1,0 +1,10 @@
+@use "../../styles/abstracts" as *;
+
+.gridContainer {
+  display: grid;
+  // Auto-fit drops cards down cleanly onto new rows on mobile screens
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.625rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
