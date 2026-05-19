@@ -44,6 +44,11 @@
     height: 40px;
     border-radius: 8px;
     font-size: 0.875rem;
+    @include respond-to(mobile) {
+      font-size: 0.75rem;
+      height: fit-content;
+    }
+
     font-weight: 600;
     cursor: pointer;
     text-transform: uppercase;
