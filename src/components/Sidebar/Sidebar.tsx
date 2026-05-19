@@ -54,7 +54,7 @@ const MENU_DATA: SidebarGroup[] = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ closeSidebar }: { closeSidebar?: () => void }) {
   const pathname = usePathname();
 
   return (
@@ -81,7 +81,12 @@ export default function Sidebar() {
           {group.items.map((item) => {
             const isActive = pathname.startsWith(item.path);
             return (
-              <Link key={item.title} href={item.path} className={`${styles.navLink} ${isActive ? styles.active : ""}`}>
+              <Link
+                key={item.title}
+                href={item.path}
+                onClick={closeSidebar}
+                className={`${styles.navLink} ${isActive ? styles.active : ""}`}
+              >
                 <Image
                   src={`/icons/${item.icon}.svg`}
                   alt=""

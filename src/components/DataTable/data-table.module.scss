@@ -9,6 +9,10 @@
   overflow-x: auto;
   padding: 1.875rem;
   position: relative;
+
+  @include respond-to(desktop) {
+    padding: 1.25rem;
+  }
 }
 
 .tableElement {
@@ -19,6 +23,7 @@
 
   th {
     padding: 1rem 0rem;
+    padding-right: 2.25rem;
     color: $color-slate;
     font-weight: 600;
     text-transform: uppercase;
@@ -32,14 +37,23 @@
       gap: 0.5rem;
       cursor: pointer;
     }
+
+    @include respond-to(desktop) {
+      padding-right: 1.75rem;
+    }
   }
 
   td {
     padding: 0.875rem 0rem;
+    padding-right: 2.25rem;
     color: $color-slate;
     border-bottom: 1px solid rgba(33, 63, 125, 0.05);
     // vertical-align: middle;
     white-space: nowrap;
+
+    @include respond-to(desktop) {
+      padding-right: 1.75rem;
+    }
   }
 
   tr:last-child td {

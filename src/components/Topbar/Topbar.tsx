@@ -4,12 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./topbar.module.scss";
 
-export default function Topbar() {
+export default function Topbar({ toggleSidebar }: { toggleSidebar?: () => void }) {
   return (
     <header className={styles.topbar}>
       <div className={styles.leftSection}>
+        {/* Mobile Hamburger Button */}
+        <button className={styles.hamburgerBtn} onClick={toggleSidebar} aria-label="Toggle Menu">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#213F7D"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
         <Link href="/dashboard">
-          <Image src="/img/logo.svg" alt="Lendsqr Logo" width={145} height={30} priority />
+          <Image src="/img/logo.svg" alt="Lendsqr Logo" width={145} height={30} priority className={styles.logo} />
         </Link>
 
         <div className={styles.searchGroup}>
