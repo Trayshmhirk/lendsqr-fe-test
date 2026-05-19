@@ -1,0 +1,106 @@
+@use "../../styles/abstracts" as *;
+
+.selectContainer {
+  position: relative;
+  z-index: 100;
+
+  // Dynamic sizing based on where we use it
+  &.variant--default {
+    width: 100%;
+  }
+  &.variant--pagination {
+    width: fit-content;
+  }
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &--default {
+    padding: 0.75rem;
+    border: 1px solid rgba(33, 63, 125, 0.15);
+    border-radius: 8px;
+    color: $color-navy;
+    font-size: 0.875rem;
+    background-color: $color-white;
+
+    &:focus,
+    &.isOpen {
+      outline: none;
+      border-color: $color-teal;
+    }
+  }
+
+  &--pagination {
+    background-color: rgba(33, 63, 125, 0.1);
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    color: $color-navy;
+    font-weight: 500;
+    font-size: 0.875rem;
+    width: 70px;
+  }
+
+  .icon {
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+  }
+
+  &.isOpen .icon {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  min-width: 100%;
+  background-color: $color-white;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+
+  // Shadcn outer padding container
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  z-index: 101;
+
+  // Smart Alignment Classes
+  &.position--down {
+    top: calc(100% + 4px);
+  }
+  &.position--up {
+    bottom: calc(100% + 4px);
+  }
+}
+
+.option {
+  // Shadcn slim internal option padding
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  color: $color-slate;
+  cursor: pointer;
+  border-radius: 4px; // Internal shadcn rounding
+  transition: background-color 0.2s ease;
+  font-weight: 400;
+
+  &:hover {
+    background-color: rgba(57, 205, 204, 0.1);
+    color: $color-navy;
+  }
+
+  &.isSelected {
+    font-weight: 500;
+    color: $color-navy;
+    background-color: rgba(57, 205, 204, 0.2);
+  }
+}
